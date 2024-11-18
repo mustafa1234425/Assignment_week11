@@ -3,7 +3,6 @@ var signupEmail = document.getElementById('signupEmail')
 var signupPassword = document.getElementById('signupPassword')
 var signinEmail = document.getElementById('signinEmail')
 var signinPassword = document.getElementById('signinPassword')
-    // to get base url (localhost)
 var pathparts = location.pathname.split('/');
 var baseURL = ''
 for (var i = 0; i < pathparts.length - 1; i++) {
@@ -11,7 +10,6 @@ for (var i = 0; i < pathparts.length - 1; i++) {
 }
 console.log(baseURL);
 
-// to say welcome in home page
 var username = localStorage.getItem('sessionUsername')
 if (username) {
     document.getElementById('username').innerHTML = "Welcome " + username
@@ -23,7 +21,6 @@ if (localStorage.getItem('users') == null) {
 } else {
     signUpArray = JSON.parse(localStorage.getItem('users'))
 }
-//for check inputs is empty or not
 function isEmpty() {
 
     if (signupName.value == "" || signupEmail.value == "" || signupPassword.value == "") {
@@ -32,7 +29,6 @@ function isEmpty() {
         return true
     }
 }
-// for check email is exist
 function isEmailExist() {
     for (var i = 0; i < signUpArray.length; i++) {
         if (signUpArray[i].email.toLowerCase() == signupEmail.value.toLowerCase()) {
@@ -45,7 +41,6 @@ function signUp() {
         document.getElementById('exist').innerHTML = '<span class="text-danger m-3">All inputs is required</span>'
         return false
     }
-    // to store all value as object
     var signUp = {
         name: signupName.value,
         email: signupEmail.value,
@@ -69,8 +64,6 @@ function signUp() {
 
 
 }
-// ============= for login================
-//for check inputs is empty or not
 function isLoginEmpty() {
 
     if (signinPassword.value == "" || signinEmail.value == "") {
@@ -102,7 +95,7 @@ function login() {
     }
 
 }
-// for logout
+
 function logout() {
     localStorage.removeItem('sessionUsername')
 }
