@@ -76,8 +76,7 @@ function login() {
     for (var i = 0; i < signUpArray.length; i++) {
         if (signUpArray[i].email.toLowerCase() == email.toLowerCase() && signUpArray[i].password.toLowerCase() == password.toLowerCase()) {
             localStorage.setItem('sessionUsername', signUpArray[i].name)
-            var isGithubPages = window.location.hostname.includes('github.io');
-            var baseURL = isGithubPages ? '/login' : '';
+            var baseURL = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "");
             location.replace(baseURL + '/login.html');
         } 
         else {
