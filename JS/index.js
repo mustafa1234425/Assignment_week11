@@ -76,7 +76,11 @@ function login() {
     for (var i = 0; i < signUpArray.length; i++) {
         if (signUpArray[i].email.toLowerCase() == email.toLowerCase() && signUpArray[i].password.toLowerCase() == password.toLowerCase()) {
             localStorage.setItem('sessionUsername', signUpArray[i].name)
-            var baseURL = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "");
+            // var baseURL = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "");
+            // location.replace(baseURL + '/login.html');
+
+            var isGithubPages = window.location.hostname.includes('github.io');
+            var baseURL = isGithubPages ? '/Assignment_week11' : '';
             location.replace(baseURL + '/login.html');
         } 
         else {
