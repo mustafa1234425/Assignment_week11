@@ -82,14 +82,11 @@ function login() {
     for (var i = 0; i < signUpArray.length; i++) {
         if (signUpArray[i].email.toLowerCase() == email.toLowerCase() && signUpArray[i].password.toLowerCase() == password.toLowerCase()) {
             localStorage.setItem('sessionUsername', signUpArray[i].name)
-            if (baseURL == '/') {
-                location.replace('https://' + location.hostname + '/login.html')
-
-            } else {
-                location.replace(baseURL + '/login.html')
-
-            }
-        } else {
+            var isGithubPages = window.location.hostname.includes('github.io');
+            var baseURL = isGithubPages ? '/repository-name' : '';
+            location.replace(baseURL + '/login.html');
+        } 
+        else {
             document.getElementById('incorrect').innerHTML = '<span class="p-2 text-danger">incorrect email or password</span>'
         }
     }
