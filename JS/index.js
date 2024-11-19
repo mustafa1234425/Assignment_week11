@@ -9,12 +9,10 @@ for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
 console.log(baseURL);
-
 var username = localStorage.getItem('sessionUsername')
 if (username) {
     document.getElementById('username').innerHTML = "Welcome " + username
 }
-
 var signUpArray = []
 if (localStorage.getItem('users') == null) {
     signUpArray = []
@@ -54,15 +52,11 @@ function signUp() {
     }
     if (isEmailExist() == false) {
         document.getElementById('exist').innerHTML = '<span class="text-danger m-3">email already exists</span>'
-
     } else {
         signUpArray.push(signUp)
         localStorage.setItem('users', JSON.stringify(signUpArray))
         document.getElementById('exist').innerHTML = '<span class="text-success m-3">Success</span>'
-
     }
-
-
 }
 function isLoginEmpty() {
 
@@ -92,7 +86,6 @@ function login() {
     }
 
 }
-
 function logout() {
     localStorage.removeItem('sessionUsername')
 }
